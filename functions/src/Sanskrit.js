@@ -18,7 +18,8 @@ var Sanskrit = /** @class */ (function () {
         }
         else {
             searchTerm = req.query.q;
-            var ret_1 = "Looking for " + searchTerm + " ...";
+            // let ret = `Looking for ${searchTerm} ...`
+            var ret_1 = [];
             url = "http://spokensanskrit.org/index.php?mode=3&script=hk&tran_input=" + searchTerm + "&direct=au";
             // This is an error case
             TheRequest.post(url, function (err, resp, body) {
@@ -27,9 +28,9 @@ var Sanskrit = /** @class */ (function () {
                 $(links).each(function (i, link) {
                     var text = $(link).text();
                     text = text.trim();
-                    ret_1 += "<br>" + text;
+                    ret_1.push(text);
                 });
-                res.status(200).send(ret_1);
+                res.status(200).send(JSON.stringify(ret_1));
                 res.status(200).end();
             });
         }

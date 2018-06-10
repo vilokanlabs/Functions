@@ -13,7 +13,8 @@ class Sanskrit {
         }
         else {
             searchTerm = req.query.q
-            let ret = `Looking for ${searchTerm} ...`
+            // let ret = `Looking for ${searchTerm} ...`
+            let ret = []
             url = `http://spokensanskrit.org/index.php?mode=3&script=hk&tran_input=${searchTerm}&direct=au`
 
             // This is an error case
@@ -24,10 +25,10 @@ class Sanskrit {
                     let text = $(link).text();
                     text = text.trim()
 
-                    ret += "<br>" + text
+                    ret.push(text)
                 });
 
-                res.status(200).send(ret);
+                res.status(200).send(JSON.stringify(ret));
                 res.status(200).end();
             });
         }
