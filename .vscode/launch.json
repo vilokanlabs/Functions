@@ -13,9 +13,10 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "TS",
             "program": "${file}",
             "outFiles": [
+                "${workspaceFolder}/*.js",
                 "${workspaceFolder}/**/*.js"
             ]
         }

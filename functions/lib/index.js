@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const firebase_functions_1 = require("firebase-functions");
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -12,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @param {Object} req Cloud Function request context.
  * @param {Object} res Cloud Function response context.
  */
-exports.helloWorld = (req, res) => {
+exports.helloWorld = firebase_functions_1.https.onRequest((req, res) => {
     if (req.body.message === undefined) {
         // This is an error case, as "message" is required
         res.status(400).send('No message defined!');
@@ -22,5 +23,8 @@ exports.helloWorld = (req, res) => {
         console.log(req.body.message);
         res.status(200).end();
     }
+});
+exports.cool = () => {
+    console.log("cool");
 };
 //# sourceMappingURL=index.js.map
