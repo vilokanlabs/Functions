@@ -17,12 +17,12 @@ const firebase_functions_1 = require("firebase-functions");
 exports.helloWorld = firebase_functions_1.https.onRequest((req, res) => {
     if (req.query.q === undefined) {
         // This is an error case
-        res.status(400).send('No message defined!');
+        res.status(400).send('Query not defined!');
     }
     else {
         // Everything is ok
         console.log(req.query.q);
-        res.status(400).send(req.query.q);
+        res.status(200).send(req.query.q);
         res.status(200).end();
     }
 });
