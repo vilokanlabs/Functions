@@ -1,4 +1,6 @@
 import { Request, Response , https} from 'firebase-functions';
+import { onRequest } from 'firebase-functions/lib/providers/https';
+import Sanskrit from './Sanskrit'
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -24,6 +26,6 @@ exports.helloWorld = https.onRequest((req: Request, res: Response) => {
     }
 });
 
-exports.cool = () => {
-    console.log("cool");
-};
+exports.sanskrit = https.onRequest((req: Request, res: Response)=>{
+    new Sanskrit(req,res);
+})
