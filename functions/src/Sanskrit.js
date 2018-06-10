@@ -9,15 +9,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var TheRequest = __importStar(require("request"));
 var cheerio = __importStar(require("cheerio"));
-var searchTerm = 'screen+scraping';
-var url = 'http://www.bing.com/search?q=' + searchTerm;
+var searchTerm = 'birth';
+var url = "http://spokensanskrit.org/index.php?mode=3&script=hk&tran_input=" + searchTerm + "&direct=au";
 var Sanskrit = /** @class */ (function () {
     function Sanskrit(req, res) {
         TheRequest.post(url, function (err, resp, body) {
             var $ = cheerio.load(body);
-            var links = $('.sb_tlst h3 a'); //use your CSS selector here
+            var links = $(".bgcolor0 > td:nth-child(1), .bgcolor2 > td:nth-child(1)"); //use your CSS selector here
             $(links).each(function (i, link) {
-                console.log($(link).text() + ':\n  ' + $(link).attr('href'));
+                var text = $(link).text();
+                text = text.trim();
+                console.log(text);
             });
         });
     }
