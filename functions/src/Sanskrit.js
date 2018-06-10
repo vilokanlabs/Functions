@@ -13,20 +13,29 @@ var searchTerm = 'birth';
 var url = "http://spokensanskrit.org/index.php?mode=3&script=hk&tran_input=" + searchTerm + "&direct=au";
 var Sanskrit = /** @class */ (function () {
     function Sanskrit(req, res) {
-        TheRequest.post(url, function (err, resp, body) {
-            var $ = cheerio.load(body);
-            var links = $(".bgcolor0 > td:nth-child(1), .bgcolor2 > td:nth-child(1)"); //use your CSS selector here
-            $(links).each(function (i, link) {
-                var text = $(link).text();
-                text = text.trim();
-                console.log(text);
+        if (req.query.q === undefined) {
+            res.status(400).send("Search term undefined!");
+        }
+        else {
+            searchTerm = req.query.q;
+            url = "http://spokensanskrit.org/index.php?mode=3&script=hk&tran_input=" + searchTerm + "&direct=au";
+            // This is an error case
+            TheRequest.post(url, function (err, resp, body) {
+                var $ = cheerio.load(body);
+                var links = $(".bgcolor0 > td:nth-child(1), .bgcolor2 > td:nth-child(1)"); //use your CSS selector here
+                $(links).each(function (i, link) {
+                    var text = $(link).text();
+                    text = text.trim();
+                    res.status(200).send(text);
+                });
+                res.status(200).end();
             });
-        });
+        }
     }
     return Sanskrit;
 }());
 // Test
-if (typeof require != 'undefined' && require.main == module) {
+if (typeof require !== 'undefined' && require.main === module) {
     new Sanskrit(null, null);
 }
 exports.default = Sanskrit;

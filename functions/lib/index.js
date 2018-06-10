@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const Sanskrit_1 = require("./Sanskrit");
 const firebase_functions_1 = require("firebase-functions");
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -14,17 +15,18 @@ const firebase_functions_1 = require("firebase-functions");
  * @param {Object} res Cloud Function response context.
  */
 exports.helloWorld = firebase_functions_1.https.onRequest((req, res) => {
-    if (req.body.message === undefined) {
-        // This is an error case, as "message" is required
+    if (req.query.q === undefined) {
+        // This is an error case
         res.status(400).send('No message defined!');
     }
     else {
         // Everything is ok
-        console.log(req.body.message);
+        console.log(req.query.q);
+        res.status(400).send(req.query.q);
         res.status(200).end();
     }
 });
-exports.cool = () => {
-    console.log("cool");
-};
+exports.sanskrit = firebase_functions_1.https.onRequest((req, res) => {
+    new Sanskrit_1.default(req, res);
+});
 //# sourceMappingURL=index.js.map
