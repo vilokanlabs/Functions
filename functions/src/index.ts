@@ -1,6 +1,6 @@
+import Sanskrit from './Sanskrit'
 import { Request, Response , https} from 'firebase-functions';
 import { onRequest } from 'firebase-functions/lib/providers/https';
-import Sanskrit from './Sanskrit'
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript

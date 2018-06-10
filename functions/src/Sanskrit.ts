@@ -20,6 +20,8 @@ class Sanskrit {
 }
 
 // Test
-new Sanskrit(null,null);
+if (typeof require != 'undefined' && require.main==module) {
+    new Sanskrit(null,null);
+}
 
 export default Sanskrit

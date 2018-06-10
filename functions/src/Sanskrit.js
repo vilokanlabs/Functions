@@ -24,6 +24,8 @@ var Sanskrit = /** @class */ (function () {
     return Sanskrit;
 }());
 // Test
-new Sanskrit(null, null);
+if (typeof require != 'undefined' && require.main == module) {
+    new Sanskrit(null, null);
+}
 exports.default = Sanskrit;
 //# sourceMappingURL=Sanskrit.js.map

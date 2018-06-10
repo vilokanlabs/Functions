@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var firebase_functions_1 = require("firebase-functions");
 var Sanskrit_1 = __importDefault(require("./Sanskrit"));
+var firebase_functions_1 = require("firebase-functions");
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
